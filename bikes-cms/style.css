@@ -26,7 +26,7 @@ body {
 }
 
 .tab {
-    background: var(--white);
+    background: var(--gray);
     border-radius: 20px 20px 0 0;
     padding: 20px 24px;
     font-family: 'Montserrat';
@@ -34,6 +34,35 @@ body {
     font-size: 22px;
     line-height: 150%;
     border: none;
+}
+
+.tab-active {
+    color: var(--blue);
+    background: var(--white);
+}
+.parent {
+    display: none;
+    order:10;
+}
+
+.radiotab {
+    position: absolute;
+    opacity: 0;
+}
+
+.radiotab:checked + label {
+    color: var(--blue);
+    background: var(--white);
+}
+
+.radiotab:checked + label + .parent {
+    display: block;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 
@@ -75,6 +104,10 @@ body {
     padding-bottom: 40px;
 
 }
+.specs {
+    padding-top: 40px;
+
+}
 
 .specs-headline {
     font-weight: 500;
@@ -82,24 +115,40 @@ body {
     line-height: 150%;
     color: var(--black);
     margin-top: 0;
-    padding-top: 40px;
 }
 
 .spec-list {
     display: flex;
     flex-wrap: wrap;
-    padding-inline-start: 16px;
+    padding-inline-start: 0;
     color: var(--dark-gray);
+    /*list-style-image: url('./images/fi-rr-bike.svg');*/
+    margin-bottom: 40px;
+    list-style: none;
 }
 
 .spec-list li {
     flex-basis: 50%;
     margin-top: 16px;
+    position: relative;
+    padding-left: 30px;
+}
+.spec-list li:nth-child(odd) {
+    padding-right: 10px;
+}
+.spec-list li:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url('./images/fi-rr-bike.svg');
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .specs-input {
     background: var(--white);
-    color: var(--light-gray);
     border: 1px solid var(--gray);
     border-radius: 16px;
     padding: 14px 16px;
@@ -107,6 +156,10 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin-right: 24px;
     font-size: 16px;
+}
+
+.specs-input::placeholder{
+    color: var(--gray);
 }
 
 .specs-input:focus {
@@ -160,4 +213,130 @@ body {
 }
 .validation {
     color: red;
+}
+
+.validation:empty {
+    display: none;
+}
+
+
+@media only screen and (min-width: 481px) {
+    .mobile-only {
+        display:none !important;
+    }
+}
+@media screen and (max-width: 480px) {
+    .container {
+        width: auto;
+        margin: 40px 20px;
+    }
+
+    .parent {
+        order: 0;
+    }
+    .show {
+        display:block!important;
+    }
+
+    .desktop-only {
+        display:none !important;
+    }
+
+    .product-item {
+        /*display: none;*/
+        padding: 0 20px 30px 20px;
+        border-radius: 0 0 20px 20px;
+
+    }
+
+    .product-info {
+        flex-direction: column;
+        padding-bottom: 30px;
+    }
+
+    .product-text {
+        width: 100%;
+    }
+
+    .product-headline {
+        font-size: 24px;
+    }
+    .product-description {
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    .product-image {
+        position: static;
+    }
+
+    .product-image img {
+        width: 100%;
+    }
+    .specs {
+        padding-top: 30px;
+    }
+    .specs-headline {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .spec-list {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        margin-top: 0;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+
+    .spec-list li {
+        flex-basis: 100%;
+    }
+
+    .specs-input {
+        width: 100%;
+        margin: 15px 0;
+        font-size: 14px;
+    }
+    .specs-submit {
+        padding: 30px 20px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn {
+        font-size: 14px;
+    }
+
+    .btn-add {
+        width: 100%;
+    }
+
+    .tab {
+        background-color: var(--white);
+        border-radius: 20px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .drp-clicked {
+        background-color: var(--white);
+        color: var(--blue);
+        border-radius: 20px 20px 0 0;
+    }
+    .arrow-clicked {
+        transform: matrix(1, 0, 0, -1, 0, 0);
+    }
+
+    .radiotab:checked + label > img{
+        transform: rotate(180deg);
+    }
+
+    .radiotab:checked + label {
+        border-radius: 20px 20px 0 0;
+    }
+
 }

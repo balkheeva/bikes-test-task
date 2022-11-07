@@ -7,84 +7,93 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 <div class="container">
     <div class="products">
-        <div class="tabs">
-            <button class="tab" id="tab-1" onclick="openItem('item-1', 'tab-1')">Горный велосипед</button>
-            <button class="tab" id="tab-2" style="background: #D9D9D9" onclick="openItem('item-2', 'tab-2')">Женский велосипед</button>
+        <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tabone" checked="checked">
+        <label class="tab" for="tabone">Горный велосипед<img class="mobile-only arrow" src="images/Vector.svg" alt="arrow"></label>
+        <div class="parent" id="product-1" tabindex="1">
+            <div class="product-item">
+                <div class="product-info">
+                        <picture class="product-image">
+                            <source srcset="./images/image-1-mob.png"
+                                    media="(max-width: 479px)">
+                            <source srcset="./images/image-1.png"
+                                    media="(min-width: 480px)">
+                            <img src="./images/image-1-mob.png" alt="Велосипед STELS Navigator 510 HD 26 2022" />
+                        </picture>
+
+                    <div class="product-text">
+                        <p class="product-headline">Велосипед STELS Navigator 510 HD 26 2022</p>
+                        <p class="product-description">Данный велосипед с колесами 26&nbsp;дюймов хорошо подходит
+                            высоким подросткам. Прогиб рамы и&nbsp;небольшой размер рамы расчитан на&nbsp;рост от&nbsp;135
+                            до&nbsp;165&nbsp;см.</p>
+                        <p class="product-description">Суммарный вес велосипеда был снижен до&nbsp;16,9&nbsp;кг, так как
+                            рама была изготовлена с&nbsp;учетом использования велосипеда подростками.</p>
+                    </div>
+                </div>
+                <div class="specs">
+                    <p class="specs-headline">Характеристики</p>
+                    <ol class="spec-list">
+                        <li>Двойной обод</li>
+                        <li>Алюминиевый сплав</li>
+                        <li>Колеса диаметром 26 дюймов</li>
+                        <li>Покрышки 26х1,95"</li>
+                    </ol>
+                    <p class="specs-headline">Добавить характеристику</p>
+                    <input class="specs-input" type="text" placeholder="Алюминиевый сплав">
+                    <button class="btn btn-primary btn-add" onclick="addSpec(this)">Добавить</button>
+                    <p class="validation"></p>
+
+                    <div class="specs-submit">
+                        <button class="btn btn-primary" onclick="submitSpecs(this)">Окей</button>
+
+                        <button class="btn btn-cancel" onclick="deleteSpec(this)">Отмена</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="product-item" id="item-1">
-            <div class="product-info">
-                <div class="product-image">
-                    <img src="./images/image-1.png" alt="Велосипед STELS Navigator 510 HD 26 2022">
+
+        <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabtwo">
+        <label class="tab" for="tabtwo">Женский велосипед<img class="mobile-only arrow" src="images/Vector.svg" alt="arrow"></label>
+        <div class="parent" id="product-2" tabindex="1">
+            <div class="product-item">
+                <div class="product-info">
+                        <picture class="product-image">
+                            <source srcset="./images/image-2-mob.png"
+                                    media="(max-width: 479px)">
+                            <source srcset="./images/image-2.png"
+                                    media="(min-width: 480px)">
+                            <img src="./images/image-2-mob.png" alt="Велосипед SCHWINN Traveler women 2022"/>
+                        </picture>
+                    <div class="product-text">
+                        <p class="product-headline">Велосипед SCHWINN Traveler women 2022</p>
+                        <p class="product-description">Женский велосипед со стальной рамой Classic step-true lightweight
+                            позволяет девушкам без проблем его перемещать.</p>
+                        <p class="product-description">На данном велосипеде имеется 7&nbsp;скоростей с&nbsp;переключателями
+                            от&nbsp;Shimano, а&nbsp;жесткая вилка обеспечивает отличную управляемость. Подходит для
+                            катания по&nbsp;асфальтированным поверхностям.</p>
+                    </div>
                 </div>
-                <div class="product-text">
-                    <p class="product-headline">Велосипед STELS Navigator 510 HD 26 2022</p>
-                    <p class="product-description">Данный велосипед с колесами 26 дюймов хорошо подходит высоким
-                        подросткам.
-                        Прогиб рамы и небольшой размер рамы расчитан на рост от 135 до 165 см.</p>
-                    <p class="product-description">Суммарный вес велосипеда был снижен до 16,9 кг, так как рама была
-                        изготовлена
-                        с учетом использования велосипеда подростками.</p>
-                </div>
-            </div>
-            <div class="specs">
-                <p class="specs-headline">Характеристики</p>
-                <ol class="spec-list" id="list-1">
-                    <li>Двойной обод</li>
-                    <li>Алюминиевый сплав</li>
-                    <li>Колеса диаметром 26 дюймов</li>
-                    <li>Покрышки 26х1,95"</li>
-                </ol>
-
-                <p class="specs-headline">Добавить характеристику</p>
-                <input id="input-1" class="specs-input" type="text" placeholder="Алюминиевый сплав">
-                <button class="btn btn-primary" onclick="addSpec('list-1','input-1')">Добавить</button>
-
-                <div class="specs-submit">
-                    <button class="btn btn-primary">Окей</button>
-                    <button class="btn btn-cancel" onclick="deleteSpec()">Отмена</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-item" id="item-2" style="display:none">
-            <div class="product-info">
-
-                <div class="product-image">
-                    <img src="./images/image-2.png" alt="Велосипед SCHWINN Traveler women 2022">
-                </div>
-                <div class="product-text">
-                    <p class="product-headline">Велосипед SCHWINN Traveler women 2022</p>
-                    <p class="product-description">Женский велосипед со стальной рамой Classic step-true lightweight
-                        позволяет
-                        девушкам без проблем его перемещать.</p>
-                    <p class="product-description">На данном велосипеде имеется 7 скоростей с переключателями от
-                        Shimano, а
-                        жесткая вилка обеспечивает отличную управляемость. Подходит для катания по асфальтированным
-                        поверхностям.</p>
-                </div>
-            </div>
-            <div class="specs">
-                <p class="specs-headline">Характеристики</p>
-                <ol class="spec-list" id="list-2">
-                    <li>Стальная рама</li>
-                    <li>Жесткая вилка</li>
-                    <li>Колеса диаметром 24 дюймов</li>
-                    <li>7 скоростей</li>
-                </ol>
-
-                <p class="specs-headline">Добавить характеристику</p>
-                <input id="input-2" class="specs-input" type="text" placeholder="Алюминиевый сплав">
-
-                <button class="btn btn-primary" onclick="addSpec('list-2', 'input-2')">Добавить</button>
-                <p class="validation" id="validation" style="display: none">Введите характеристику</p>
-
-                <div class="specs-submit">
-                    <button class="btn btn-primary">Окей</button>
-                    <button class="btn btn-cancel" onclick="deleteSpec()">Отмена</button>
+                <div class="specs">
+                    <p class="specs-headline">Характеристики</p>
+                    <ol class="spec-list">
+                        <li>Стальная рама</li>
+                        <li>Жесткая вилка</li>
+                        <li>Колеса диаметром 24 дюймов</li>
+                        <li>7 скоростей</li>
+                    </ol>
+                    <p class="specs-headline">Добавить характеристику</p>
+                    <input class="specs-input" type="text" placeholder="Алюминиевый сплав">
+                    <button class="btn btn-primary btn-add" onclick="addSpec(this)">Добавить</button>
+                    <p class="validation"></p>
+                    <div class="specs-submit">
+                        <button class="btn btn-primary" onclick="submitSpecs(this)">Окей</button>
+                        <button class="btn btn-cancel" onclick="deleteSpec(this)">Отмена</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,40 +101,40 @@
 </div>
 
 <script>
-
-    let product = document.getElementsByClassName("product-item");
-    let tab = document.getElementsByClassName("tab");
-
-
-    function openItem(itemName, tabName) {
-        for (let i = 0; i < product.length; i++) {
-            product[i].style.display = "none";
-            tab[i].style.background="#D9D9D9";
-        }
-        document.getElementById(itemName).style.display = "block";
-        document.getElementById(tabName).style.background="#ffffff";
-    }
-
-    function addSpec (listId, inputId) {
-        let spec = document.getElementById(inputId);
-        let list = document.getElementById(listId);
-        let text = spec.value;
+    function addSpec(element) {
+        const parent = findParent(element);
+        const spec = parent.querySelector('.specs-input');
+        const list = parent.querySelector('.spec-list');
+        const text = spec.value;
         let li = document.createElement('li');
         li.dataset.sent = 'true';
         li.innerHTML = text;
-        if (text.length>0){
+        if (text.length > 0) {
             list.appendChild(li);
-            document.getElementById('validation').style.display = "none";
+            parent.querySelector('.validation').textContent = "";
             spec.value = '';
-        } else document.getElementById('validation').style.display = "block";
+        } else parent.querySelector('.validation').textContent = "Введите характеристику";
 
     }
 
-    function deleteSpec () {
-        document.querySelectorAll('[data-sent="true"]').forEach(e => e.parentElement.removeChild(e));
+    function deleteSpec(element) {
+        const parent = findParent(element);
+        parent.querySelectorAll('[data-sent="true"]').forEach(e => {
+            e.parentElement.removeChild(e)
+        });
+        parent.querySelector('.validation').textContent = "";
     }
 
+    function submitSpecs(element) {
+        const parent = findParent(element);
+        parent.querySelectorAll('[data-sent="true"]').forEach(e => {
+            e.removeAttribute('data-sent')
+        });
+    }
 
+    function findParent(element) {
+        return element.closest('.parent');
+    }
 </script>
 
 </body>
